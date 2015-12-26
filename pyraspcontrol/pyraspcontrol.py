@@ -10,7 +10,7 @@ app.config.from_object('config')
 
 @app.route('/', methods=['GET'])
 def index():
-    return flask.render_template('index.html', page='index')
+    return flask.render_template('home.html', page='index')
 
 
 @app.route('/details', methods=['GET'])

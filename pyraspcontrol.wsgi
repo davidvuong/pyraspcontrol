@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-import sys, os
-sys.path.insert(0, os.path.expanduser('~/workspace/pyraspcontrol'))
+import sys
+sys.path.insert(0, '/var/www/pyraspcontrol')
 
 from pyraspcontrol.pyraspcontrol import app as application

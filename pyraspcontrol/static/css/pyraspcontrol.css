@@ -19,14 +19,6 @@ body {
     border-top-right-radius: 2px;
 }
 
-.center {
-    text-align: center;
-}
-
-.navbar-brand {
-    display: none;
-}
-
 header {
     margin: 0;
     height: 140px;
@@ -71,66 +63,6 @@ header img {
     margin: 15px 0 0 0;
 }
 
-/* Pages */
-.details table {
-    width: 100%;
-}
-
-.details tr {
-    vertical-align: top;
-}
-
-.details td {
-    padding: 20px 0;
-}
-
-.details td.check {
-    font-weight: bold;
-    min-width: 100px;
-}
-
-.details td.icon {
-    min-width: 25px;
-    padding-left: 10px;
-    padding-right: 20px;
-}
-
-.details .storage td {
-    padding: 15px 0;
-}
-
-.details .progress {
-    margin-bottom: 8px;
-}
-
-.details .storage .progress {
-    margin-top: 10px;
-}
-
-.rapid-status div {
-    margin-top: 20px;
-}
-
-.infos div {
-    margin-bottom: 20px;
-}
-
-.services td.check {
-    width: 125px;
-}
-
-.services td.icon {
-    width: 60px;
-}
-
-.disks td.check {
-    width: 125px;
-}
-
-.disks td.icon {
-    width: 60px;
-}
-
 /* Footer */
 footer {
     margin: 0;
@@ -158,6 +90,52 @@ footer a:hover {
     color: #fff;
 }
 
+/* Navigation bar */
+.navbar-icon {
+    width: 20px;
+
+    position: relative;
+    top: -4px;
+}
+.navbar-action {
+    width: 25px;
+}
+.navbar-action:hover {
+    opacity: 0.7;
+}
+
+ul.navbar-routes {
+    position: relative;
+    top: 2px;
+}
+ul.navbar-routes > li:hover {
+    background: #080808;
+}
+
+.navbar-brand {
+    display: inline-flex;
+
+    position: relative;
+    top: -16px;
+    left: -12px;
+}
+.navbar-brand .navbar-brand-label {
+    position: relative;
+
+    top: 2px;
+    font-size: 18px;
+}
+.navbar-brand .navbar-brand-logo {
+    width: 50px;
+
+    display: inline-block;
+}
+
+.progress-bar-content {
+    position: relative;
+    top: 5px;
+}
+
 /* Media queries */
 @media (max-width: 770px) {
     body {
@@ -168,21 +146,6 @@ footer a:hover {
     .container,
     .progress {
         max-width: 100% !important;
-    }
-
-    .navbar-brand {
-        display: inline-flex;
-
-        position: relative;
-        top: -16px;
-        left: -12px;
-    }
-
-    .navbar-brand .navbar-brand-label {
-        position: relative;
-
-        top: 16px;
-        font-size: 18px;
     }
 
     header img {
@@ -199,18 +162,4 @@ footer a:hover {
         padding-left: 20px;
         padding-right: 20px;
     }
-}
-
-/* Bootstrap override */
-.popover {
-    width: 650px;
-    max-width: 650px;
-}
-
-.infos div .popover-content {
-    margin-bottom: 0;
-}
-
-.popover-content table {
-    margin-bottom: 0;
 }

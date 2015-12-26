@@ -7,40 +7,42 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="">
+        <a class="navbar-brand visible-xs" href="">
             <img alt="PyRaspControl" src="../static/images/raspcontrol.png"
-                 width="50" height="50">
+                 class="navbar-brand-logo">
             <span class="navbar-brand-label">PyRaspControl</span>
         </a>
     </div>
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav">
+        <ul class="nav navbar-nav navbar-routes">
             <li {% if page == 'index' %} class="active" {% endif %}>
                 <a href="/">
-                    <span class="glyphicon glyphicon-home"></span> Home</a>
+                    <img src="../static/images/icons/home.png" class="navbar-icon"> Home</a>
             </li>
             <li {% if page == 'details' %} class="active" {% endif %}>
                 <a href="/details">
-                    <span class="glyphicon glyphicon-search"></span> Details</a>
+                    <img src="../static/images/icons/search.png" class="navbar-icon"> Details</a>
             </li>
             <li {% if page == 'services' %} class="active" {% endif %}>
                 <a href="/services">
-                    <span class="glyphicon glyphicon-cog"></span> Services</a>
+                    <img src="../static/images/icons/cogwheel.png" class="navbar-icon"> Services</a>
             </li>
             <li {% if page == 'disks' %} class="active" {% endif %}>
                 <a href="/disks">
-                    <span class="glyphicon glyphicon-hdd"></span> Disks</a>
+                    <img src="../static/images/sdd_storage.png" class="navbar-icon"> Disks</a>
             </li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
             <li>
                 <a href="#">
-                    <span class="glyphicon glyphicon-repeat"></span> Reboot</a>
+                    <img src="../static/images/icons/restart.png" class="navbar-action">
+                </a>
             </li>
             <li>
                 <a href="#">
-                    <span class="glyphicon glyphicon-off"></span> Shutdown</a>
+                    <img src="../static/images/icons/shutdown.png" class="navbar-action">
+                </a>
             </li>
         </ul>
     </div>

@@ -1,0 +1,33 @@
+div.home-page * img {
+    max-height: 75px;
+    max-width: 75px;
+}
+
+div.home-page > div.row {
+    margin-top: 6px;
+    margin-bottom: 6px;
+    border: 1px dashed rgba(211, 211, 211, .5);
+
+    min-height: 77px;
+}
+
+div.home-page * .title,
+div.home-page * .content {
+    font-size: 14px;
+
+    position: relative;
+    top: 24px;
+}
+div.home-page * span.title {
+    font-size: 16px;
+}
+
+div.home-page * img[src="../static/images/icons/error.png"],
+div.home-page * img[src="../static/images/icons/warning.png"],
+div.home-page * img[src="../static/images/icons/success.png"] {
+    width: 25px;
+    height: 25px;
+
+    position: relative;
+    top: 24px;
+}

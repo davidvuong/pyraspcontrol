@@ -1,6 +1,80 @@
 {% extends 'components/base.tpl.html' %}
+{% block css %}
+<link rel="stylesheet" href="../../static/css/home.css" media="screen"/>
+{% endblock %}
+
 {% block content %}
+<div class="home-page container">
+    <div class="row">
+        <div class="col-md-2"><img src="../static/images/icons/time.png"></div>
+        <div class="col-md-3"><span class="title">Uptime</span></div>
+        <div class="col-md-1"></div>
+        <div class="col-md-6">
+            <span class="content">14 days, 13 hours 20 minutes and 32 seconds</span>
+        </div>
+    </div>
 
-PyRaspControl HOME PAGE!
+    <div class="row">
+        <div class="col-md-2"><img src="../static/images/speedometer.png"></div>
+        <div class="col-md-3"><span class="title">CPU usage</span></div>
+        <div class="col-md-1"><img src="../static/images/icons/success.png"></div>
+        <div class="col-md-6">
+            <span class="content">
+                Loads @
+                    1min: <strong>0.02</strong> &sdot;
+                    5mins: <strong>0.02</strong> &sdot;
+                    15mins: <strong>0.05</strong>
+                <br>
+                CPU is running at <strong>697.95 Mhz</strong>
+            </span>
+        </div>
+    </div>
 
+    <div class="row">
+        <div class="col-md-2"><img src="../static/images/memory.png"></div>
+        <div class="col-md-3"><span class="title">Memory usage</span></div>
+        <div class="col-md-1"><img src="../static/images/icons/warning.png"></div>
+        <div class="col-md-6">
+            <div class="progress content">
+                <div class="progress-bar progress-bar-warning" role="progressbar"
+                     aria-valuenow="35" aria-valuemin="0" aria-valuemax="100"
+                     style="width: 47%;">
+                    47%
+                </div>
+            </div>
+            <span class="progress-bar-content">
+                Free: <strong>111MB</strong> &sdot;
+                Used: <strong>103MB</strong> &sdot;
+                Total: <strong>215MB</strong>
+            </span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2"><img src="../static/images/micro_sd_card.png"></div>
+        <div class="col-md-3"><span class="title">Swap memory</span></div>
+        <div class="col-md-1"><img src="../static/images/icons/success.png"></div>
+        <div class="col-md-6">
+            <div class="progress content">
+                <div class="progress-bar progress-bar-success" role="progressbar"
+                     aria-valuenow="35" aria-valuemin="0" aria-valuemax="100"
+                     style="width: 2em;">
+                    0%
+                </div>
+            </div>
+            <span class="progress-bar-content">
+                Free: <strong>99MB</strong> &sdot;
+                Used: <strong>0MB</strong> &sdot;
+                Total: <strong>99MB</strong>
+            </span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2"><img src="../static/images/sdd_storage.png"></div>
+        <div class="col-md-3"><span class="title">Storage</span></div>
+        <div class="col-md-1"><img src="../static/images/icons/error.png"></div>
+        <div class="col-md-6"></div>
+    </div>
+</div>
 {% endblock %}

@@ -28,7 +28,18 @@ To get PyRaspControl install onto your Raspberry Pi should be fairly straight fo
   sudo ln -s /etc/apache2/sites-available/pyraspcontrol.conf /etc/apache2/sites-enabled/pyraspcontrol.conf
   ```
 
-1. Restart Apache:
+1. Port forward your router to map TCP connections on port 80 (external) to 8080 (internal).
+
+  This step will depend on what router you have available. I have a billion router and after a quick Google search, I found [this site](http://portforward.com/english/routers/port_forwarding/routerindex.htm). They have router specific guides on how to port forward. I found it very useful.
+
+  Note that if port 8080 is already being used, you can change the port PyRaspControl runs on by editing the `/pyraspcontrol/pyraspcontrol.py` file:
+
+  ```python
+  if __name__ == '__main__':
+      app.run(port=<your port>)
+  ```
+
+1. Finally, restart Apache to see your changes take affect:
 
   ```
   sudo service apache2 restart

@@ -5,7 +5,7 @@ from __future__ import unicode_literals
 import flask
 
 app = flask.Flask(__name__)
-app.config.from_object('pyraspcontrol.config')
+app.config.from_object('config')
 
 
 @app.route('/', methods=['GET'])

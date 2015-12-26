@@ -1,0 +1,40 @@
+.navbar-icon {
+    width: 20px;
+
+    position: relative;
+    top: -3px;
+    right: 1px;
+}
+.navbar-action {
+    width: 25px;
+}
+.navbar-action:hover {
+    opacity: 0.7;
+}
+
+ul.navbar-routes {
+    position: relative;
+    top: 2px;
+}
+ul.navbar-routes > li:hover {
+    background: #080808;
+}
+
+.navbar-brand {
+    display: inline-flex;
+
+    position: relative;
+    top: -16px;
+    left: -12px;
+}
+.navbar-brand .navbar-brand-label {
+    position: relative;
+
+    top: 2px;
+    font-size: 18px;
+}
+.navbar-brand .navbar-brand-logo {
+    width: 50px;
+
+    display: inline-block;
+}

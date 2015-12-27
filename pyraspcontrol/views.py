@@ -3,9 +3,7 @@
 from __future__ import unicode_literals
 
 import flask
-
-app = flask.Flask(__name__)
-app.config.from_object('config')
+from pyraspcontrol.app import app
 
 
 @app.route('/', methods=['GET'])
@@ -26,6 +24,3 @@ def services():
 @app.route('/disks', methods=['GET'])
 def disks():
     return flask.render_template('disks.html', page='disks')
-
-if __name__ == '__main__':
-    app.run(port=8080)

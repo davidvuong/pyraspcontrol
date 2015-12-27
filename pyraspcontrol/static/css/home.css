@@ -22,7 +22,7 @@ div.home-page * span.title {
     font-size: 16px;
 }
 
-div.home-page * img[src="../static/images/icons/error.png"],
+div.home-page * img[src="../static/images/icons/danger.png"],
 div.home-page * img[src="../static/images/icons/warning.png"],
 div.home-page * img[src="../static/images/icons/success.png"] {
     width: 25px;

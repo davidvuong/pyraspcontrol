@@ -1,12 +1,20 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+from __future__ import unicode_literals
+
 import math
 from subprocess import check_output
+from subprocess import CalledProcessError
+
+from pyraspcontrol.lib import constants
 
 
 def get_uptime():
     """Retrieves the uptime as a human-friendly (readable) string."""
-    raw_uptime = check_output(['cat', '/proc/uptime'])
+    try:
+        raw_uptime = check_output(['cat', '/proc/uptime'])
+    except CalledProcessError:
+        return {'uptime': 'N/A', 'alert': constants.DANGER}
 
     # `/proc/uptime`:
     #
@@ -31,4 +39,7 @@ def get_uptime():
         days_str = '%d days, ' % days
     elif days == 1:
         days_str = '1 day, '
-    return '%s%02d:%02d:%02d' % (days_str, hours, minutes, seconds)
+    return {
+        'uptime': '%s%02d:%02d:%02d' % (days_str, hours, minutes, seconds),
+        'alert': constants.SUCCESS if days < 100 else constants.WARNING
+    }

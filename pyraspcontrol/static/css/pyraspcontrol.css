@@ -90,6 +90,10 @@ footer a:hover {
     color: #fff;
 }
 
+footer p {
+    font-size: 10px;
+}
+
 .progress-bar-content {
     position: relative;
     top: 5px;

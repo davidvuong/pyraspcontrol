@@ -3,4 +3,10 @@
 import sys
 sys.path.insert(0, '/var/www/pyraspcontrol')
 
-from pyraspcontrol.pyraspcontrol import app as application
+from pyraspcontrol import config
+from pyraspcontrol.app import app as application
+from pyraspcontrol.views import *
+
+
+if __name__ == '__main__':
+    application.run(port=config.PORT)

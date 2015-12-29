@@ -23,7 +23,7 @@ def _execute_ps():
     # ps -e -o pmem,user,args --sort=-pmem | sed "/^ 0.0 /d" | head -5
     ps = Popen(['ps', '-e', '-o', 'pmem,user,args', '--sort=-pmem'], stdout=subprocess.PIPE)
     ps = Popen(['sed', '/^ 0.0 /d'], stdin=ps.stdout, stdout=subprocess.PIPE)
-    ps = Popen(['head', '-' + constants.HEAD_LIMIT], stdin=ps.stdout, stdout=subprocess.PIPE)
+    ps = Popen(['head', '-%d' % constants.HEAD_LIMIT], stdin=ps.stdout, stdout=subprocess.PIPE)
     return ps.communicate()[0]
 
 

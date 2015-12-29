@@ -6,12 +6,17 @@ from flask import render_template
 from pyraspcontrol.app import app
 from pyraspcontrol.lib.uptime import get_uptime
 
+from pyraspcontrol.lib.cpu import get_cpu_info
+from pyraspcontrol.lib.cpu import get_temperature
+
 
 @app.route('/', methods=['GET'])
 def index():
     context = {
         'page': 'index',
         'uptime': get_uptime(),
+        # 'cpu': get_cpu_info(),
+        # 'cpu_temp': get_temperature(),
     }
     return render_template('home.html', **context)
 

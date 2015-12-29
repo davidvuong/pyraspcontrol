@@ -10,7 +10,10 @@
         <div class="col-md-3"><span class="title">Uptime</span></div>
         <div class="col-md-1"></div>
         <div class="col-md-6">
-            <span class="content"><strong>{{ uptime['uptime'] }}</strong></span>
+            <span class="content">
+                <strong>{{ uptime['uptime'] }}</strong> &sdot;
+                load avg @ 0.02, 0.02, 0.05
+            </span>
         </div>
     </div>
 
@@ -20,12 +23,9 @@
         <div class="col-md-1"><img src="../static/images/icons/success.png"></div>
         <div class="col-md-6">
             <span class="content">
-                Loads @
-                    1min: <strong>0.02</strong> &sdot;
-                    5mins: <strong>0.02</strong> &sdot;
-                    15mins: <strong>0.05</strong>
-                <br>
-                CPU is running at <strong>697.95 Mhz</strong>
+                CPU @ <strong>697.95 Mhz</strong>,
+                <span class="text-danger">35℃ (95℉)</span>,
+                <strong>ondemand</strong>
             </span>
         </div>
     </div>

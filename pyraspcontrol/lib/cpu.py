@@ -47,7 +47,7 @@ def _execute_ps():
     # ps -e -o pcpu,user,args --sort=-pcpu | sed "/^ 0.0 /d" | head -5
     ps = Popen(['ps', '-e', '-o', 'pcpu,user,args', '--sort=-pcpu'], stdout=subprocess.PIPE)
     ps = Popen(['sed', '/^ 0.0 /d'], stdin=ps.stdout, stdout=subprocess.PIPE)
-    ps = Popen(['head', '-' + constants.HEAD_LIMIT], stdin=ps.stdout, stdout=subprocess.PIPE)
+    ps = Popen(['head', '-%d' % constants.HEAD_LIMIT], stdin=ps.stdout, stdout=subprocess.PIPE)
     return ps.communicate()[0]
 
 

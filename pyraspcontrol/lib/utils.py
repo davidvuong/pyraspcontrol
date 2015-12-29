@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+import re
 
 
 def read(file_):
@@ -9,3 +10,19 @@ def read(file_):
             return f.read()
     except IOError:
         return None
+
+
+def strip_whitespace(string):
+    """Strips all leading, trailing and in-between whitespaces.
+
+    >>> strip_whitespace('hello  world  ')
+    'hello world'
+    >>> strip_whitespace(None)
+    ''
+    >>> strip_whitespace('')
+    ''
+    >>> strip_whitespace('hello world')
+    'hello world'
+
+    """
+    return re.sub(r' +', ' ', string).strip() if string else ''

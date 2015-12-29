@@ -9,10 +9,13 @@
         <div class="col-md-2"><img src="../static/images/icons/time.png"></div>
         <div class="col-md-3"><span class="title">Uptime</span></div>
         <div class="col-md-1"></div>
-        <div class="col-md-6">
+        <div class="col-md-6 content-wrapper">
             <span class="content">
                 <strong>{{ uptime['uptime'] }}</strong> &sdot;
-                load avg @ 0.02, 0.02, 0.05
+                load avg <strong>@</strong>
+                {{ cpu['loads'][0] }},
+                {{ cpu['loads'][1] }},
+                {{ cpu['loads'][2] }}
             </span>
         </div>
     </div>
@@ -20,12 +23,17 @@
     <div class="row">
         <div class="col-md-2"><img src="../static/images/speedometer.png"></div>
         <div class="col-md-3"><span class="title">CPU usage</span></div>
-        <div class="col-md-1"><img src="../static/images/icons/success.png"></div>
-        <div class="col-md-6">
+        <div class="col-md-1">
+            <img src="../static/images/icons/{{ cpu['alert'] }}.png">
+        </div>
+        <div class="col-md-6 content-wrapper">
             <span class="content">
-                CPU @ <strong>697.95 Mhz</strong>,
-                <span class="text-danger">35℃ (95℉)</span>,
-                <strong>ondemand</strong>
+                CPU is running at <strong>{{ cpu['cpu_data'][0]['freq'] }}MHz</strong>
+                <br>
+                min: <strong>{{ cpu['cpu_data'][0]['min_freq'] }}MHz</strong> &sdot;
+                max: <strong>{{ cpu['cpu_data'][0]['max_freq'] }}MHz</strong> &sdot;
+                {{ cpu['cpu_data'][0]['governor'] }}
+                ({{ cpu['cpu_count'] }} cores)
             </span>
         </div>
     </div>
@@ -33,19 +41,17 @@
     <div class="row">
         <div class="col-md-2"><img src="../static/images/memory.png"></div>
         <div class="col-md-3"><span class="title">Memory usage</span></div>
-        <div class="col-md-1"><img src="../static/images/icons/warning.png"></div>
-        <div class="col-md-6">
+        <div class="col-md-1"><img src="../static/images/icons/{{ ram['alert'] }}.png"></div>
+        <div class="col-md-6 progress-content-wrapper simple">
             <div class="progress content">
-                <div class="progress-bar progress-bar-warning" role="progressbar"
-                     aria-valuenow="35" aria-valuemin="0" aria-valuemax="100"
-                     style="width: 47%;">
-                    47%
-                </div>
+                <div class="progress-bar progress-bar-{{ ram['alert'] }}" role="progressbar"
+                     aria-valuenow="{{ ram['percentage'] }}" aria-valuemin="0" aria-valuemax="100"
+                     style="width: {{ ram['percentage'] }}%;">{{ ram['percentage'] }}%</div>
             </div>
             <span class="progress-bar-content">
-                Free: <strong>111MB</strong> &sdot;
-                Used: <strong>103MB</strong> &sdot;
-                Total: <strong>215MB</strong>
+                free: <strong>{{ ram['free'] }}M</strong> &sdot;
+                used: <strong>{{ ram['used'] }}M</strong> &sdot;
+                total: <strong>{{ ram['total'] }}M</strong>
             </span>
         </div>
     </div>
@@ -53,35 +59,61 @@
     <div class="row">
         <div class="col-md-2"><img src="../static/images/micro_sd_card.png"></div>
         <div class="col-md-3"><span class="title">Swap memory</span></div>
-        <div class="col-md-1"><img src="../static/images/icons/success.png"></div>
-        <div class="col-md-6">
+        <div class="col-md-1"><img src="../static/images/icons/{{ swap['alert'] }}.png"></div>
+        <div class="col-md-6 progress-content-wrapper simple">
             <div class="progress content">
-                <div class="progress-bar progress-bar-success" role="progressbar"
-                     aria-valuenow="35" aria-valuemin="0" aria-valuemax="100"
-                     style="width: 2em;">
-                    0%
+                <div class="progress-bar progress-bar-{{ swap['alert'] }}" role="progressbar"
+                     aria-valuenow="{{ swap['percentage'] }}" aria-valuemin="0" aria-valuemax="100"
+                     style="width: {{ '8' if swap['percentage'] < 8 else swap['percentage'] }}%;">
+                    {{ swap['percentage'] }}%
                 </div>
             </div>
             <span class="progress-bar-content">
-                Free: <strong>99MB</strong> &sdot;
-                Used: <strong>0MB</strong> &sdot;
-                Total: <strong>99MB</strong>
+                free: <strong>{{ swap['free'] }}M</strong> &sdot;
+                used: <strong>{{ swap['used'] }}M</strong> &sdot;
+                total: <strong>{{ swap['total'] }}M</strong>
             </span>
         </div>
     </div>
 
+    {% for disk in storage %}
     <div class="row">
-        <div class="col-md-2"><img src="../static/images/sdd_storage.png"></div>
-        <div class="col-md-3"><span class="title">Storage</span></div>
-        <div class="col-md-1"><img src="../static/images/icons/danger.png"></div>
-        <div class="col-md-6"></div>
+        <div class="col-md-2">
+            {% if loop.index0 == 0 %}
+            <img src="../static/images/sdd_storage.png">
+            {% endif %}
+        </div>
+        <div class="col-md-3">
+            {% if loop.index0 == 0 %}
+            <span class="title">Storage</span>
+            {% endif %}
+        </div>
+
+        <div class="col-md-1"><img src="../static/images/icons/{{ disk['alert'] }}.png"></div>
+        <div class="col-md-6 progress-content-wrapper">
+            <span class="progress-bar-content">{{ disk['mount'] }}</span>
+            <div class="progress content">
+                <div class="progress-bar progress-bar-{{ disk['alert'] }}" role="progressbar"
+                     aria-valuenow="{{ disk['percentage'] }}" aria-valuemin="0" aria-valuemax="100"
+                     style="width: {{ '8' if disk['percentage'] < 8 else disk['percentage'] }}%;">
+                    {{ disk['percentage'] }}%
+                </div>
+            </div>
+            <span class="progress-bar-content">
+                free: <strong>{{ disk['available'] }}</strong>
+                used: <strong>{{ disk['used'] }}</strong>
+                total: <strong>{{ disk['size'] }}</strong>
+                ({{ disk['file_system'] }})
+            </span>
+        </div>
     </div>
+    {% endfor %}
 
     <div class="row">
         <div class="col-md-2"><img src="../static/images/wifi.png"></div>
         <div class="col-md-3"><span class="title">Network</span></div>
         <div class="col-md-1"><img src="../static/images/icons/success.png"></div>
-        <div class="col-md-6"></div>
+        <div class="col-md-6 content-wrapper"></div>
     </div>
 </div>
 {% endblock %}

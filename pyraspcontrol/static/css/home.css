@@ -11,15 +11,36 @@ div.home-page > div.row {
     min-height: 77px;
 }
 
+/* row-content */
 div.home-page * .title,
+div.home-page * .content-wrapper {
+    line-height: 75px;
+}
 div.home-page * .content {
     font-size: 14px;
 
-    position: relative;
-    top: 24px;
+    display: inline-block;
+    vertical-align: middle;
+    line-height: normal;
 }
-div.home-page * span.title {
+div.home-page * .title {
     font-size: 16px;
+}
+
+/* row-progress-content */
+div.home-page * .progress.content {
+    display: block;
+    margin-bottom: 0;
+}
+div.home-page * .progress-bar-content {
+    font-size: 12px;
+}
+
+div.home-page * .progress-content-wrapper {
+    padding-top: 12px;
+}
+div.home-page * .progress-content-wrapper.simple {
+    padding-top: 22px;
 }
 
 div.home-page * img[src="../static/images/icons/danger.png"],
@@ -27,6 +48,8 @@ div.home-page * img[src="../static/images/icons/warning.png"],
 div.home-page * img[src="../static/images/icons/success.png"] {
     width: 25px;
     height: 25px;
+
+    cursor: pointer;
 
     position: relative;
     top: 24px;

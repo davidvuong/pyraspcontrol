@@ -28,7 +28,7 @@ def _execute_ps():
 
 
 def get_ram_info():
-    ram_data = map(int, re.findall(_FREE_PATTERN, _execute_free()[2]))
+    ram_data = map(int, re.findall(_FREE_PATTERN, _execute_free()[1]))
     total, used, free, shared, buffers, cached = ram_data
     data = {
         'total': total,
@@ -41,7 +41,7 @@ def get_ram_info():
         'alert': constants.SUCCESS,
     }
     data['percentage'] = int(round((data['used'] / total) * 100))
-    if data['alert'] >= _WARNING_MEMORY_THRESHOLD:
+    if data['percentage'] >= _WARNING_MEMORY_THRESHOLD:
         data['alert'] = constants.WARNING
     return data
 
@@ -52,7 +52,7 @@ def get_swap_info():
         'total': total,
         'used': used,
         'free': free,
-        'percentage': used / total,
+        'percentage': int(round(used / total)),
         'alert': constants.SUCCESS,
     }
     if data['percentage'] > _MAX_USED_SWAP:

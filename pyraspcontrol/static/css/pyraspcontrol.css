@@ -8,8 +8,8 @@ body {
     padding: 40px 20px;
 }
 
-.container, .navbar .container {
-    max-width: 700px;
+.container, .navbar {
+    max-width: 780px;
 }
 
 .container-content {
@@ -92,11 +92,6 @@ footer a:hover {
 
 footer p {
     font-size: 10px;
-}
-
-.progress-bar-content {
-    position: relative;
-    top: 5px;
 }
 
 /* Media queries */

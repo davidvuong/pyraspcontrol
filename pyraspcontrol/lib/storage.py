@@ -6,8 +6,8 @@ from subprocess import Popen
 
 from pyraspcontrol.lib import constants
 
-_DISK_USAGE_DANGER_THRESHOLD = 90
-_DISK_USAGE_WARNING_THRESHOLD = 70
+_DISK_USAGE_DANGER_THRESHOLD = 85
+_DISK_USAGE_WARNING_THRESHOLD = 65
 
 
 def get_disks():
@@ -44,4 +44,5 @@ def get_disks():
             disk_data['alert'] = constants.DANGER
         if disk_data['percentage'] > _DISK_USAGE_WARNING_THRESHOLD:
             disk_data['alert'] = constants.WARNING
+        data.append(disk_data)
     return data

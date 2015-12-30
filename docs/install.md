@@ -1,6 +1,6 @@
 # Install PyRaspControl
 
-To get PyRaspControl install onto your Raspberry Pi should be fairly straight forward. The following are steps on what you need to install and manually configure to get PyRaspControl up and running.
+Getting PyRaspControl install onto your Raspberry Pi should be fairly straight forward. The following are steps to get it installed, configured, and running:
 
 1. Clone the project repository from GitHub:
 
@@ -8,6 +8,8 @@ To get PyRaspControl install onto your Raspberry Pi should be fairly straight fo
   sudo git clone https://github.com/davidvuong/pyraspcontrol.git /var/www/pyraspcontrol
   cd /var/www/pyraspcontrol
   ```
+  
+  *Alternatively, if you would rather clone it elsewhere, make sure to create a symbolic link in `/var/www/`.*
 
 1. Install the project (Python) dependencies:
 
@@ -28,7 +30,7 @@ To get PyRaspControl install onto your Raspberry Pi should be fairly straight fo
   sudo ln -s /etc/apache2/sites-available/pyraspcontrol.conf /etc/apache2/sites-enabled/pyraspcontrol.conf
   ```
 
-1. Port forward your router to map TCP connections on port 80 (external) to 8080 (internal).
+1. (optional) Port forward your router to map TCP connections on port 80 (external) to 8080 (internal).
 
   This step will depend on what router you have available. I have a billion router and after a quick Google search, I found [this site](http://portforward.com/english/routers/port_forwarding/routerindex.htm). They have router specific guides on how to port forward. I found it very useful.
 

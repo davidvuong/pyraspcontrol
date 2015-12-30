@@ -43,6 +43,10 @@ div.home-page * .progress-content-wrapper.simple {
     padding-top: 22px;
 }
 
+div.home-page * .external-ip {
+    display: none;
+}
+
 div.home-page * img[src="../static/images/icons/danger.png"],
 div.home-page * img[src="../static/images/icons/warning.png"],
 div.home-page * img[src="../static/images/icons/success.png"] {

@@ -1,15 +1,18 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-import json
 import urllib2
 import subprocess
 from subprocess import Popen
+
+from datetime import datetime
+from datetime import timedelta
 
 from pyraspcontrol.lib import constants
 
 _MAX_CONNECTIONS = 50
 _INTERFACE = 'eth0'
-_IP_SERVICE = 'http://ip.jsontest.com/'
+_IP_SERVICE = 'http://ipecho.net/plain'
+_IP_CACHE = {}
 
 
 def _get_connections():
@@ -65,7 +68,15 @@ def get_internal_ip(request):
 
 
 def get_external_ip():
+    diff = datetime.now() - timedelta(minutes=1)
+    if _IP_CACHE and _IP_CACHE['cached_at'] < diff:
+        return _IP_CACHE['ip']
+
     try:
-        return json.loads(urllib2.urlopen(_IP_SERVICE).read())['ip']
-    except (urllib2.HTTPError, ValueError, TypeError):
+        external_ip = urllib2.urlopen(_IP_SERVICE).read()
+        _IP_CACHE['ip'] = external_ip
+        _IP_CACHE['cached_at'] = datetime.now()
+
+        return external_ip
+    except urllib2.HTTPError:
         return None

@@ -30,10 +30,33 @@
             <span class="content">
                 CPU is running at <strong>{{ cpu['cpu_data'][0]['freq'] }}MHz</strong>
                 <br>
+                <small>
                 min: <strong>{{ cpu['cpu_data'][0]['min_freq'] }}MHz</strong> &sdot;
                 max: <strong>{{ cpu['cpu_data'][0]['max_freq'] }}MHz</strong> &sdot;
                 {{ cpu['cpu_data'][0]['governor'] }}
                 ({{ cpu['cpu_count'] }} cores)
+                </small>
+            </span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2"><img src="../static/images/temperature.png"></div>
+        <div class="col-md-3"><span class="title">CPU temperature</span></div>
+        <div class="col-md-1">
+            <img src="../static/images/icons/{{ cpu_temp['alert'] }}.png">
+        </div>
+        <div class="col-md-6 progress-content-wrapper simple">
+            <div class="progress content">
+                <div class="progress-bar progress-bar-{{ cpu_temp['alert'] }}" role="progressbar"
+                     aria-valuenow="{{ cpu_temp['percentage'] }}" aria-valuemin="0" aria-valuemax="100"
+                     style="width: {{ cpu_temp['percentage'] }}%;">{{ cpu_temp['percentage'] }}%</div>
+            </div>
+            <span class="progress-bar-content">
+                celsius: <strong>{{ cpu_temp['degrees_c'] }}&deg;C</strong>
+                (of {{ cpu_temp['max_c'] }})
+                fahrenheit: <strong>{{ cpu_temp['degrees_f'] }}&deg;F</strong>
+                (of {{ cpu_temp['max_f'] }})
             </span>
         </div>
     </div>
@@ -112,8 +135,21 @@
     <div class="row">
         <div class="col-md-2"><img src="../static/images/wifi.png"></div>
         <div class="col-md-3"><span class="title">Network</span></div>
-        <div class="col-md-1"><img src="../static/images/icons/success.png"></div>
-        <div class="col-md-6 content-wrapper"></div>
+        <div class="col-md-1"><img src="../static/images/icons/{{ network['connections_alert'] }}.png"></div>
+        <div class="col-md-6 content-wrapper">
+            <span class="content">
+                IP: <strong class="text-info">{{ ip_internal }}</strong> [internal] &sdot;
+                <em class="external-ip-loader">fetching...</em>
+                <strong class="text-info external-ip"></strong> [external]
+                <br>
+                received: <strong>{{ network['rx_raw'] }}</strong>
+                sent: <strong>{{ network['tx_raw'] }}</strong>
+                ({{ network['connections'] }} connections)
+            </span>
+        </div>
     </div>
 </div>
 {% endblock %}
+{% block scripts %}
+<script src="../static/js/home.js"></script>
+{% endblock scripts %}

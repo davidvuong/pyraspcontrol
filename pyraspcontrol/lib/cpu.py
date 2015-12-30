@@ -16,6 +16,10 @@ _DANGER_TEMPERATURE_THRESHOLD = 80
 _WARNING_TEMPERATURE_THRESHOLD = 60
 
 
+def _celsius_to_fahrenheit(temp):
+    return temp * 9 / 5 + 32
+
+
 def get_temperature():
     """Retrieves the Raspberry Pi's current CPU temperature.
 
@@ -31,10 +35,14 @@ def get_temperature():
     """
     temperature = utils.read('/sys/class/thermal/thermal_zone0/temp')
     temperature = int(temperature) / 1000
+
     data = {
-        'degrees': temperature,
-        'percentage': int(round(temperature / _MAX_TEMPERATURE)),
+        'degrees_c': temperature,
+        'degrees_f': _celsius_to_fahrenheit(temperature),
+        'percentage': int(round(temperature / _MAX_TEMPERATURE * 100)),
         'alert': constants.SUCCESS,
+        'max_c': _MAX_TEMPERATURE,
+        'max_f': int(_celsius_to_fahrenheit(_MAX_TEMPERATURE)),
     }
     if data['percentage'] >= _DANGER_TEMPERATURE_THRESHOLD:
         data['alert'] = constants.DANGER

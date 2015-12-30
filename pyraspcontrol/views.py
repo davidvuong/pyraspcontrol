@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-from __future__ import unicode_literals
-
 from flask import render_template
+from flask import request
+
 from pyraspcontrol.app import app
 from pyraspcontrol.lib.uptime import get_uptime
 
@@ -11,6 +11,9 @@ from pyraspcontrol.lib.cpu import get_temperature
 from pyraspcontrol.lib.memory import get_ram_info
 from pyraspcontrol.lib.memory import get_swap_info
 from pyraspcontrol.lib.storage import get_disks
+from pyraspcontrol.lib.network import get_network_info
+from pyraspcontrol.lib.network import get_internal_ip
+from pyraspcontrol.lib.users import get_connected_users
 
 
 @app.route('/', methods=['GET'])
@@ -23,6 +26,9 @@ def index():
         'ram': get_ram_info(),
         'swap': get_swap_info(),
         'storage': get_disks(),
+        'network': get_network_info(),
+        'ip_internal': get_internal_ip(request),
+        'connected_users': get_connected_users(),
     }
     return render_template('home.html', **context)
 

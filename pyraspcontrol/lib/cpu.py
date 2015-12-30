@@ -34,7 +34,7 @@ def get_temperature():
 
     """
     temperature = utils.read('/sys/class/thermal/thermal_zone0/temp')
-    temperature = int(temperature) / 1000
+    temperature = int(temperature) / 1000 if temperature else 0
 
     data = {
         'degrees_c': temperature,
@@ -77,13 +77,13 @@ def get_cpu_info():
         prefix = '/sys/devices/system/cpu/cpu%d/cpufreq/' % i
 
         freq = utils.read(prefix + 'scaling_cur_freq')
-        cpu_data[i]['freq'] = int(freq) / 1000
+        cpu_data[i]['freq'] = int(freq) / 1000 if freq else None
 
         min_freq = utils.read(prefix + 'scaling_min_freq')
-        cpu_data[i]['min_freq'] = int(min_freq) / 1000
+        cpu_data[i]['min_freq'] = int(min_freq) / 1000 if min_freq else None
 
         max_freq = utils.read(prefix + 'scaling_max_freq')
-        cpu_data[i]['max_freq'] = int(max_freq) / 1000
+        cpu_data[i]['max_freq'] = int(max_freq) / 1000 if max_freq else None
 
         # https://wiki.archlinux.org/index.php/CPU_frequency_scaling#Scaling_governors
         cpu_data[i]['governor'] = utils.read(prefix + 'scaling_governor')

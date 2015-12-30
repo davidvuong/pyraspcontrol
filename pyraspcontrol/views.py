@@ -41,7 +41,7 @@ def index():
         'ip_internal': get_internal_ip(request),
         'connected_users': get_connected_users(),
     })
-    return render_template('home.html', **context)
+    return render_template('index.html', **context)
 
 
 @app.route('/services', methods=['GET'])

@@ -1,9 +1,9 @@
-div.home-page * img {
+div.index-page * img {
     max-height: 75px;
     max-width: 75px;
 }
 
-div.home-page > div.row {
+div.index-page > div.row {
     margin-top: 6px;
     margin-bottom: 6px;
     border: 1px dashed rgba(211, 211, 211, .5);
@@ -12,44 +12,44 @@ div.home-page > div.row {
 }
 
 /* row-content */
-div.home-page * .title,
-div.home-page * .content-wrapper {
+div.index-page * .title,
+div.index-page * .content-wrapper {
     line-height: 75px;
 }
-div.home-page * .content {
+div.index-page * .content {
     font-size: 14px;
 
     display: inline-block;
     vertical-align: middle;
     line-height: normal;
 }
-div.home-page * .title {
+div.index-page * .title {
     font-size: 16px;
 }
 
 /* row-progress-content */
-div.home-page * .progress.content {
+div.index-page * .progress.content {
     display: block;
     margin-bottom: 0;
 }
-div.home-page * .progress-bar-content {
+div.index-page * .progress-bar-content {
     font-size: 12px;
 }
 
-div.home-page * .progress-content-wrapper {
+div.index-page * .progress-content-wrapper {
     padding-top: 12px;
 }
-div.home-page * .progress-content-wrapper.simple {
+div.index-page * .progress-content-wrapper.simple {
     padding-top: 22px;
 }
 
-div.home-page * .external-ip {
+div.index-page * .external-ip {
     display: none;
 }
 
-div.home-page * img[src="../static/images/icons/danger.png"],
-div.home-page * img[src="../static/images/icons/warning.png"],
-div.home-page * img[src="../static/images/icons/success.png"] {
+div.index-page * img[src="../static/images/icons/danger.png"],
+div.index-page * img[src="../static/images/icons/warning.png"],
+div.index-page * img[src="../static/images/icons/success.png"] {
     width: 25px;
     height: 25px;
 

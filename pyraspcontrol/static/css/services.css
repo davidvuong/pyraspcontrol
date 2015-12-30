@@ -1,0 +1,15 @@
+div.services-page {
+    margin-top: 6px;
+    margin-bottom: 6px;
+    border: 1px dashed rgba(211, 211, 211, .5);
+}
+div.services-page.loading-services {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 175px;
+}
+
+div.services-page .loading-message {
+    font-size: 12px;
+}

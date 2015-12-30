@@ -17,13 +17,14 @@
 
     <link rel="stylesheet" href="../../static/css/pyraspcontrol.css" media="screen"/>
     <link rel="stylesheet" href="../../static/css/navbar.css" media="screen"/>
+    <link rel="stylesheet" href="../../static/css/spinner.css" media="screen"/>
     {% block css %}{% endblock %}
 </head>
 
 <body>
 
-{% include 'components/header.tpl.html' %}
-{% include 'components/navbar.tpl.html' %}
+{% include 'partials/header.tpl.html' %}
+{% include 'partials/navbar.tpl.html' %}
 
 <div class="container-content">
 <div class="container">
@@ -31,7 +32,7 @@
 </div>
 </div>
 
-{% include 'components/footer.tpl.html' %}
+{% include 'partials/footer.tpl.html' %}
 {% block scripts %}{% endblock %}
 
 </body>

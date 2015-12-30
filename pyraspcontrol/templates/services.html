@@ -1,6 +1,11 @@
-{% extends 'components/base.tpl.html' %}
+{% extends 'partials/base.tpl.html' %}
+{% block css %}
+<link rel="stylesheet" href="../../static/css/services.css" media="screen"/>
+{% endblock %}
+
 {% block content %}
-
-PyRaspControl SERVICES PAGE!
-
+<div class="services-page loading-services">
+    <img src="../static/images/spinner.gif">
+    <em class="loading-message">loading services...</em>
+</div>
 {% endblock %}

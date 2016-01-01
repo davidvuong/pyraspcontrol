@@ -1,0 +1,7 @@
+1. authentication
+2. auto-refresh every n interval
+3. more header information (version, kernel etc.)
+4. services page
+5. restart/shutdown endpoints
+6. refactor backend to return partials instead of entire pages
+7. add about page

@@ -1,3 +1,9 @@
 (function () {
-    console.log('[services-page] Implement me!');
+    $.get('/api/services', function (data) {
+        var page = $('.services-page');
+        page.removeClass('loading-services');
+
+        page.empty();
+        page.append(data);
+    });
 })();

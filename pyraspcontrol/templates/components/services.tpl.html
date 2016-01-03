@@ -1,0 +1,18 @@
+<div class="services-page">
+    {% for service in services %}
+    <div class="row">
+        <div class="col-md-4">
+            <span class="label
+                {% if service.status == 'stopped' %} label-danger {% endif %}
+                {% if service.status == 'unknown' %} label-warning {% endif %}
+                {% if service.status == 'running' %} label-success {% endif %}
+            ">[{{ service.status }}]</span>
+        </div>
+        <div class="col-md-8">
+            <div class="well well-sm">
+                <code>{{ service.name }}</code>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>

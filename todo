@@ -5,3 +5,4 @@
 5. restart/shutdown endpoints
 6. refactor backend to return partials instead of entire pages
 7. add about page
+8. port to python 3

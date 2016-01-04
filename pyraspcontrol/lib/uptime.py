@@ -40,5 +40,5 @@ def get_uptime():
         days_str = '1 day, '
     return {
         'uptime': '%s%02d:%02d:%02d' % (days_str, hours, minutes, seconds),
-        'alert': constants.SUCCESS if days < 100 else constants.WARNING
+        'alert': constants.SUCCESS if days < 100 else constants.WARNING,
     }

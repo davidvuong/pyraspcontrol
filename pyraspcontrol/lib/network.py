@@ -1,9 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+import copy
 import urllib2
 import subprocess
-from subprocess import Popen
 
+from subprocess import Popen
 from datetime import datetime
 from datetime import timedelta
 
@@ -25,7 +26,7 @@ def _format_raw_usage(usage):
     return usage.replace('(', '').replace(')', '')
 
 
-def get_network_info():
+def _get_network_usage():
     ps = Popen(['/sbin/ifconfig', _INTERFACE], stdout=subprocess.PIPE)
     ps = Popen(['grep', 'RX\ bytes'], stdin=ps.stdout, stdout=subprocess.PIPE)
     network_usage = ps.communicate()[0]
@@ -33,6 +34,15 @@ def get_network_info():
     network_usage = network_usage.strip()
     network_usage = network_usage.replace('RX bytes:', '')
     network_usage = network_usage.replace('TX bytes:', '')
+    return network_usage or None
+
+
+def get_network_info():
+    network_usage = _get_network_usage()
+    if not network_usage:
+        response = copy.deepcopy(constants.DEFAULT_ERROR_RESPONSE)
+        response.update({'connections_alert': constants.DANGER})
+        return response
 
     # RX Bytes: The number of bytes received (downloaded).
     # TX Bytes: The number of bytes transmitted (uploaded).

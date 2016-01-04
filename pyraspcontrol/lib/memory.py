@@ -27,8 +27,15 @@ def _execute_ps():
     return ps.communicate()[0]
 
 
+def _parse_ps_data(index):
+    try:
+        return map(int, re.findall(_FREE_PATTERN, _execute_free()[index]))
+    except OSError:
+        return None
+
+
 def get_ram_info():
-    ram_data = map(int, re.findall(_FREE_PATTERN, _execute_free()[1]))
+    ram_data = _parse_ps_data(1) or (1, 0, 0, 0, 0, 0,)
     total, used, free, shared, buffers, cached = ram_data
     data = {
         'total': total,
@@ -37,7 +44,7 @@ def get_ram_info():
         'shared': shared,
         'buffers': buffers,
         'cached': cached,
-        'details': _execute_ps(),
+        'details': _execute_ps() or {},
         'alert': constants.SUCCESS,
     }
     data['percentage'] = int(round((data['used'] / total) * 100))
@@ -47,7 +54,8 @@ def get_ram_info():
 
 
 def get_swap_info():
-    total, used, free = map(int, re.findall(_FREE_PATTERN, _execute_free()[2]))
+    ram_data = _parse_ps_data(2) or (1, 0, 0)
+    total, used, free = ram_data
     data = {
         'total': total,
         'used': used,

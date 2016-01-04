@@ -28,13 +28,13 @@
         </div>
         <div class="col-md-6 content-wrapper">
             <span class="content">
-                CPU is running at <strong>{{ cpu['cpu_data'][0]['freq'] }}MHz</strong>
+                CPU is running at <strong>{{ cpu['cpu_data'][0]['freq'] or 'N/A' }}MHz</strong>
                 <br>
                 <small>
-                min: <strong>{{ cpu['cpu_data'][0]['min_freq'] }}MHz</strong> &sdot;
-                max: <strong>{{ cpu['cpu_data'][0]['max_freq'] }}MHz</strong> &sdot;
-                {{ cpu['cpu_data'][0]['governor'] }}
-                ({{ cpu['cpu_count'] }} cores)
+                min: <strong>{{ cpu['cpu_data'][0]['min_freq'] or 'N/A' }}MHz</strong> &sdot;
+                max: <strong>{{ cpu['cpu_data'][0]['max_freq'] or 'N/A' }}MHz</strong> &sdot;
+                {{ cpu['cpu_data'][0]['governor'] or 'N/A' }}
+                ({{ cpu['cpu_count'] or 'N/A' }} cores)
                 </small>
             </span>
         </div>
@@ -142,9 +142,9 @@
                 <em class="external-ip-loader">fetching...</em>
                 <strong class="text-info external-ip"></strong> [external]
                 <br>
-                received: <strong>{{ network['rx_raw'] }}</strong>
-                sent: <strong>{{ network['tx_raw'] }}</strong>
-                ({{ network['connections'] }} connections)
+                received: <strong>{{ network['rx_raw'] or 'N/A' }}</strong>
+                sent: <strong>{{ network['tx_raw'] or 'N/A' }}</strong>
+                ({{ network['connections'] or 'N/A' }} connections)
             </span>
         </div>
     </div>

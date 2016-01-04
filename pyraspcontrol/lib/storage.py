@@ -30,16 +30,16 @@ def get_disks():
     data = []
     for disk_info in disks:
         info = shlex.split(disk_info)
-        fs, size, used, available, usage, mount = info
         disk_data = {
-            'file_system': fs,
-            'size': size,
-            'used': used,
-            'available': available,
-            'percentage': int(usage.replace('%', '')),
-            'mount': mount,
+            'file_system': info[0],
+            'size': info[1],
+            'used': info[2],
+            'available': info[3],
+            'percentage': int(info[4].replace('%', '')),
+            'mount': info[5],
             'alert': constants.SUCCESS,
         }
+
         if disk_data['percentage'] > _DISK_USAGE_DANGER_THRESHOLD:
             disk_data['alert'] = constants.DANGER
         if disk_data['percentage'] > _DISK_USAGE_WARNING_THRESHOLD:

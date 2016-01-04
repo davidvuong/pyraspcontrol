@@ -83,10 +83,10 @@ def get_external_ip():
         return _IP_CACHE['ip']
 
     try:
-        external_ip = urllib2.urlopen(_IP_SERVICE).read()
+        external_ip = urllib2.urlopen(_IP_SERVICE, timeout=8).read()
         _IP_CACHE['ip'] = external_ip
         _IP_CACHE['cached_at'] = datetime.now()
 
         return external_ip
-    except urllib2.HTTPError:
+    except (urllib2.HTTPError, urllib2.URLError):
         return None
